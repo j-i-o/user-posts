@@ -11,11 +11,15 @@
       </v-app-bar-nav-icon>
       <v-app-bar-title> Usuarios </v-app-bar-title>
     </v-app-bar>
-    <div id="nav">
-      <router-link to="/">Usuarios</router-link> |
-      <router-link to="/:id/posts">Posts</router-link>
-    </div>
-    <router-view />
+    <v-content>
+      <v-container>
+        <div id="nav">
+          <router-link to="/">Usuarios</router-link> |
+          <router-link to="/:id/posts">Posts</router-link>
+        </div>
+        <router-view />
+      </v-container>
+    </v-content>
   </div>
 </template>
 

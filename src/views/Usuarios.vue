@@ -10,8 +10,18 @@ import Users from '@/components/Users'
 
 export default {
   name: 'Home',
+  data() {
+    return {
+      usuarios: null
+    }
+  },
   components: {
     Users
+  },
+
+  created() {
+    const response = this.$http.get('https://jsonplaceholder.typicode.com/users')
+    console.log(response)
   }
 }
 </script>
