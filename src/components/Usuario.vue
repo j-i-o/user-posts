@@ -12,7 +12,9 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <router-link :to="{ name: 'Posts', params: { user: datos, id: datos.id } }">
+        <router-link
+          :to="{ name: 'Posts', params: { user: datos, id: datos.id } }"
+        >
           <v-icon class="mr-1"> mdi-comment-text </v-icon>
         </router-link>
       </v-card-actions>

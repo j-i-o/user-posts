@@ -10,6 +10,8 @@
 <script>
 import Post from "@/components/Post";
 import generateAvatar from "@/util/avatar";
+import apiService from "@/services/apiService"
+
 export default {
   components: {
     Post,
@@ -26,9 +28,7 @@ export default {
     };
   },
   async created() {
-    const response = await this.$http.get(
-      `https://jsonplaceholder.typicode.com/users/${this.user.id}/posts`
-    );
+    const response = await apiService.getPostsByUser(this.user.id)
     this.posts = response.data;
   },
   methods: {

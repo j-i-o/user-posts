@@ -1,17 +1,14 @@
 <template>
-  <div data-app class="usuarios">
+  <div data-app class="usuarios mt-4 d-flex flex-column align-center">
     <ModalCrearUsuario />
-    <v-row no-gutters>
-      <v-col cols="12" sm="4" md="8">
-        <Usuario v-for="(user, index) in usuarios" :datos="user" :key="index" />
-      </v-col>
-    </v-row>
+    <Usuario v-for="(user, index) in usuarios" :datos="user" :key="index" />
   </div>
 </template>
 
 <script>
 import Usuario from "@/components/Usuario";
 import ModalCrearUsuario from "@/components/ModalCrearUsuario";
+import apiService from "@/services/apiService";
 export default {
   name: "Home",
   data() {
@@ -26,9 +23,7 @@ export default {
   },
 
   async created() {
-    const response = await this.$http.get(
-      "https://jsonplaceholder.typicode.com/users"
-    );
+    const response = await apiService.getUsers();
     this.usuarios = response.data;
   },
 };

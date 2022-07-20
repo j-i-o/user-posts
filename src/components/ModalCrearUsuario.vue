@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="createUser" width="600" persistent>
     <template v-slot:activator="{ on, attrs }">
-      <v-btn color="black lighten-2" dark v-bind="attrs" v-on="on">
+      <v-btn color="black lighten-2" dark v-bind="attrs" v-on="on" width="300">
         Crear nuevo usuario
       </v-btn>
     </template>
@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import apiService from "@/services/apiService";
 export default {
   data() {
     return {
@@ -100,23 +101,18 @@ export default {
       this.creado = null;
     },
     async guardar() {
-      const response = await this.$http.post(
-        "https://jsonplaceholder.typicode.com/posts",
-        {
-          username: this.username,
-          nombre: this.nombre,
-          apellido: this.apellido,
-          email: this.email,
-        }
-      );
-      if (response) {
-        this.creado = response.data;
-      }
+      const response = await apiService.createUser({
+        username: this.username,
+        nombre: this.nombre,
+        apellido: this.apellido,
+        email: this.email,
+      });
+      this.creado = response.data;
     },
     async cerrar() {
-      this.limpiar()
-      this.createUser = false
-    }
+      this.limpiar();
+      this.createUser = false;
+    },
   },
 };
 </script>
