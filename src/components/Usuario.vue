@@ -7,9 +7,7 @@
         <v-img max-width="40" :src="generateAvatar()"></v-img>
       </v-card-title>
       <v-card-subtitle>@{{ datos.username.toLowerCase() }}</v-card-subtitle>
-      <v-card-text>
-        texto blabla blablablbab blbalabba lb alb a al babbbal asbasf
-      </v-card-text>
+      <v-card-text> Email de contacto: {{ datos.email.toLowerCase() }} </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <router-link

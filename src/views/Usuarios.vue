@@ -1,6 +1,6 @@
 <template>
   <div data-app class="usuarios mt-4 d-flex flex-column align-center">
-    <ModalCrearUsuario />
+    <ModalCrearUsuario @newUser="agregarUsuario($event)"/>
     <Usuario v-for="(user, index) in usuarios" :datos="user" :key="index" />
   </div>
 </template>
@@ -26,5 +26,11 @@ export default {
     const response = await apiService.getUsers();
     this.usuarios = response.data;
   },
+  methods: {
+    agregarUsuario(user) {
+      this.usuarios.push(user)
+      console.log("agregao")
+    }
+  }
 };
 </script>

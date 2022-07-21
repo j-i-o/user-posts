@@ -14,11 +14,7 @@
           <v-col cols="12" sm="6" md="12">
             Username: {{ creado.username }}
           </v-col>
-          <v-col cols="12" sm="6" md="12"> Nombre: {{ creado.nombre }} </v-col>
-          <v-col cols="12" sm="6" md="12">
-            Apellido:
-            {{ creado.apellido }}
-          </v-col>
+          <v-col cols="12" sm="6" md="12"> Nombre: {{ creado.name }} </v-col>
           <v-col cols="12" sm="6" md="12"> Email: {{ creado.email }} </v-col>
         </v-container>
       </v-card-text>
@@ -103,13 +99,13 @@ export default {
     async guardar() {
       const response = await apiService.createUser({
         username: this.username,
-        nombre: this.nombre,
-        apellido: this.apellido,
+        name: this.nombre + ' ' + this.apellido,
         email: this.email,
       });
       this.creado = response.data;
     },
     async cerrar() {
+      this.$emit('newUser', this.creado)
       this.limpiar();
       this.createUser = false;
     },
